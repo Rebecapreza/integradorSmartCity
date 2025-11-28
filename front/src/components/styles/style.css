@@ -1,0 +1,118 @@
+/* Container principal */
+.login-container {
+  background-color: #dbeafe; 
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* O Cartão Central de Login */
+.login-card {
+  background-color: #93c5fd; 
+  padding: 3rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); 
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; 
+}
+
+/* Título "Login" */
+.login-title {
+  color: #0d1b2a; 
+  font-family: 'Georgia', serif; 
+  font-size: 2.5rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+/* Grupo de Inputs  */
+.input-group {
+  width: 100%;
+}
+
+/* Estilo dos Campos de Texto */
+.input-group input {
+  width: 100%;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 30px; 
+  background-color: rgba(255, 255, 255, 0.45); 
+  color: #1e3a8a; 
+  font-size: 1rem;
+  outline: none;
+  transition: background-color 0.3s ease;
+  box-sizing: border-box; 
+}
+
+/* Placeholder */
+.input-group input::placeholder {
+  color: #5b7c99; 
+}
+
+/* Efeito ao clicar no input */
+.input-group input:focus {
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 0 2px rgba(30, 58, 138, 0.2);
+}
+
+/* Botão Entrar */
+.login-button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 30px;
+  background-color: #d1e0ff; 
+  color: #0d1b2a;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+/* Efeito Hover no Botão */
+.login-button:hover {
+  background-color: #b0caff; 
+  transform: translateY(-2px); 
+}
+
+/* Texto de "Não tem uma conta?" */
+.signup-text {
+  color: #0d1b2a;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+/* Link "Cadastre-se" */
+.signup-link {
+  color: #0d1b2a;
+  font-weight: bold;
+  text-decoration: none;
+  margin-left: 5px;
+}
+
+.signup-link:hover {
+  text-decoration: underline;
+}
+
+/* ACESSIBILIDADE */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
