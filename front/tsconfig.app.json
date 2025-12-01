@@ -16,13 +16,14 @@
     "noEmit": true,
     "jsx": "react-jsx",
 
+    /* Adicione esta linha: */
+    "allowJs": true,
+
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "erasableSyntaxOnly": true,
-    "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noFallthroughCasesInSwitch": true
   },
   "include": ["src"]
 }
