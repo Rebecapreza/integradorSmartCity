@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./components/pages/login";
-// ... outros imports
 import Home from "./components/pages/home";
 import Sensores from "./components/pages/sensores";
 import Ambientes from "./components/pages/ambientes"; // <--- 1. IMPORTAR AQUI

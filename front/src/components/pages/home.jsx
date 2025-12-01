@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Sidebar from '../utils/Sidebar'; // <--- Importe a Sidebar aqui
-import '../styles/home.css'; 
+import '../styles/home.css';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -18,53 +18,40 @@ const Home = () => {
 
       {/* --- Conteúdo Principal --- */}
       <main className="main-content">
-        
+
         <section className="hero-banner">
           <h1>Bem-vindo ao SmartCity!</h1>
           <p>
-            Monitore em tempo real temperatura, umidade, luminosidade e 
-            fluxo de pessoas. Tenha controle total e insights visuais para a 
+            Monitore em tempo real temperatura, umidade, luminosidade e
+            fluxo de pessoas. Tenha controle total e insights visuais para a
             gestão eficiente dos ambientes.
           </p>
-          <button className="hero-button">Saiba mais</button>
         </section>
 
         <section className="monitoring-section">
           <div className="monitoring-header">
-            <h2>☁️ Monitoramento real</h2>
-          </div>
-
-          <div className="room-selector">
-            <select className="room-dropdown">
-              <option>Sala A201</option>
-              <option>Sala B104</option>
-              <option>Lab Informática</option>
-            </select>
+            <h2>📡 Sensores</h2>
           </div>
 
           <div className="sensor-grid">
             <div className="sensor-circle" onClick={() => irParaSensor('temperatura')}>
               <span className="sensor-icon">🌡️</span>
               <span className="sensor-label">Temperatura</span>
-              <span className="sensor-value">25°C</span>
             </div>
 
             <div className="sensor-circle" onClick={() => irParaSensor('umidade')}>
               <span className="sensor-icon">💧</span>
               <span className="sensor-label">Umidade</span>
-              <span className="sensor-value">80%</span>
             </div>
 
             <div className="sensor-circle" onClick={() => irParaSensor('luminosidade')}>
               <span className="sensor-icon">☀️</span>
               <span className="sensor-label">Luminosidade</span>
-              <span className="sensor-value">50%</span>
             </div>
 
             <div className="sensor-circle" onClick={() => irParaSensor('contador')}>
-              <span className="sensor-icon">👥</span>
-              <span className="sensor-label">Pessoas</span>
-              <span className="sensor-value">28</span>
+              <span className="sensor-icon">🟰</span>
+              <span className="sensor-label">Contador</span>
             </div>
           </div>
         </section>

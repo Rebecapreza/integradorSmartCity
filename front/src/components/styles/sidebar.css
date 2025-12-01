@@ -1,68 +1,84 @@
+/* --- CONTAINER GERAL --- */
 .dashboard-container {
   display: flex;
   height: 100vh;
   width: 100vw;
   background-color: #dbeafe;
-  overflow: hidden; /* Evita rolagem na janela inteira */
+  overflow: hidden;
 }
 
-/* --- Estilos da Sidebar --- */
+/* --- SIDEBAR --- */
 .sidebar {
-  width: 100px; /* Largura fixa */
-  background-color: #8da4e3; /* Azul médio do tema */
+  width: 110px;
+  background-color: #5c89c9;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 20px;
-  border-top-right-radius: 30px;
-  border-bottom-right-radius: 30px;
-  box-shadow: 2px 0 10px rgba(0,0,0,0.1);
-  z-index: 10;
-  flex-shrink: 0; /* Garante que a sidebar não encolha */
+  padding-top: 25px;
+  border-top-right-radius: 35px;
+  border-bottom-right-radius: 35px;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.12);
+  gap: 40px;
 }
 
+/* LOGO */
 .sidebar-logo-img {
-  width: 50px;
-  margin-bottom: 40px;
-}
-
-.sidebar-nav {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  width: 100%;
-}
-
-.nav-item {
-  background: none;
-  border: none;
-  color: #0d1b2a;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  cursor: pointer;
-  font-size: 0.7rem;
-  font-weight: bold;
-  opacity: 0.7;
+  width: 65px;
+  margin-bottom: 20px;
   transition: 0.3s;
 }
 
-.nav-item:hover, .nav-item.active {
-  opacity: 1;
-  transform: scale(1.1); /* Efeito de zoom ao passar o mouse ou quando ativo */
+.sidebar-logo-img:hover {
+  transform: scale(1.05);
 }
 
-.nav-icon {
-  font-size: 1.5rem;
-  margin-bottom: 5px;
-}
-
-/* --- Área de Conteúdo Principal (Onde as páginas carregam) --- */
-.main-content {
-  flex: 1; /* Ocupa todo o espaço restante */
-  padding: 30px 50px;
+/* NAV */
+.sidebar-nav {
   display: flex;
   flex-direction: column;
-  overflow-y: auto; /* Permite rolagem interna se o conteúdo for grande */
+  gap: 28px;
+  width: 100%;
   align-items: center;
+}
+
+/* BOTÕES */
+.nav-item {
+  background: none;
+  border: none;
+  width: 85px;
+  padding: 12px 5px;
+  border-radius: 16px;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+
+  color: #0d1b2a;
+  font-size: 0.75rem;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: 0.25s ease;
+  opacity: 0.8;
+}
+
+/* HOVER */
+.nav-item:hover {
+  background: rgba(255,255,255,0.25);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+  transform: translateX(3px);
+  opacity: 1;
+}
+
+/* ITEM ATIVO */
+.nav-item.active {
+  background: rgba(255,255,255,0.38);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  opacity: 1;
+}
+
+/* ÍCONE */
+.nav-icon {
+  font-size: 1.6rem;
 }

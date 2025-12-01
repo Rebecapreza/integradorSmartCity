@@ -49,17 +49,9 @@ const Sidebar = () => {
           <span>Sensores</span>
         </button>
 
-        <button 
-          className={isActive('/mapa')} 
-          onClick={() => navigate('/mapa')}
-        >
-          <span className="nav-icon">📍</span> 
-          <span>Mapa</span>
-        </button>
-
         <button className="nav-item" onClick={handleLogout}>
-          <span className="nav-icon">👤</span> 
-          <span>Perfil (Sair)</span>
+          <span className="nav-icon">⛔️ </span> 
+          <span>Sair</span>
         </button>
       </nav>
     </aside>

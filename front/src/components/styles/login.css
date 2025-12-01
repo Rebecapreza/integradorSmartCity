@@ -1,127 +1,147 @@
-/* Container principal - Fundo Azul Claro */
+/* === CONTAINER PRINCIPAL === */
 .login-container {
-  background-color: #dbeafe;
-  /* Tom azul claro da imagem */
+  background-color: #dbeafe; /* Fundo azul claro */
   min-height: 100vh;
   width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Poppins', sans-serif; 
   margin: 0;
   padding: 0;
 }
 
-/* O Cartão Central - Azul "Periwinkle" mais escuro */
+/* === CARD DO LOGIN === */
 .login-card {
-  background-color: #749DE6;
-  padding: 3rem 2rem;
-  border-radius: 40px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  width: 500px;
-  height: 500px;
-  text-align: center;
+  background: #97c4f7;
+  padding: 3rem 2.5rem;
+  border-radius: 35px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  width: 420px;  /* antes era 500 */
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
   align-items: center;
+  gap: 2.2rem;
+  animation: fadeIn 0.6s ease;
 }
 
-/* Área da Logo */
+/* Animação suave ao entrar */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* === LOGO === */
 .logo-area {
-  margin-bottom: -10px;
   display: flex;
   justify-content: center;
 }
 
 .logo-img {
-  width: 130px;
+  width: 110px; /* leve redução para balancear */
   height: auto;
   object-fit: contain;
 }
 
-/* Título "Login" */
+/* === TÍTULO "Login" === */
 .login-title {
   color: #000057;
-  font-family: 'Times New Roman', Times, serif;
-  font-size: 3rem;
-  font-weight: 400;
+  font-family: 'Times New Roman', serif;
+  font-size: 2.6rem; /* antes 3rem */
   margin: 0;
-  margin-bottom: 10px;
 }
 
-/* Grupo de Inputs */
-.input-group {
-  width: 400px;
-}
-
+/* === GRUPO DE INPUTS === */
 .login-form {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 40px; /* Isso cria o espaçamento exato entre os inputs */
-  align-items: center; /* Centraliza o botão e inputs */
+  gap: 25px;
+  align-items: center;
 }
 
-/* Estilo dos Campos de Texto */
+.input-group {
+  width: 100%;
+  max-width: 330px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* === INPUTS === */
 .input-group input {
   width: 100%;
-  padding: 15px 25px;
+  padding: 14px 20px;
   border: none;
-  border-radius: 50px;
-  background-color: rgba(255, 255, 255, 0.25);
-  color: #1e3a8a;
+  border-radius: 40px;
+  background-color: #74a9e6;
+  color: #fff;
   font-size: 0.95rem;
   outline: none;
-  transition: background-color 0.3s ease;
-  box-sizing: border-box;
-  text-align: left;
+  transition: 0.25s ease;
 }
 
-/* Placeholder - Cor azulada suave */
+/* Placeholder */
 .input-group input::placeholder {
-  color: #CDDFFF;
+  color: #dbeafe;
   font-weight: 500;
 }
 
-/* Efeito ao clicar no input */
+/* Foco */
 .input-group input:focus {
-  background-color: #99bcfa;
-  box-shadow: #86b0f7;
+  background-color: #7eb9fa;
+  box-shadow: 0 0 6px rgba(141, 193, 255, 0.8);
 }
 
-/* Botão Entrar */
+/* === BOTÃO === */
 .login-button {
-  width: 150px;
+  width: 180px;
   padding: 12px 0;
   border: none;
-  border-radius: 50px;
+  border-radius: 40px;
   background-color: #CDDFFF;
   color: #000057;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: bold;
-  font-family: 'Times New Roman', Times, serif;
   cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: 0.25s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.07);
 }
 
-/* Efeito Hover no Botão */
 .login-button:hover {
-  background-color: #d9e5fa;
-  transform: translateY(-1px);
+  background-color: #dfeaff;
+  transform: translateY(-2px);
 }
 
-/* Acessibilidade */
+/* === ACESSIBILIDADE === */
 .sr-only {
   position: absolute;
   width: 1px;
   height: 1px;
-  padding: 0;
   margin: -1px;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
-  border-width: 0;
+  border: 0;
+}
+
+/* Corrige o texto digitado (fica preto sobre azul claro) */
+.input-group input {
+  color: #000; /* cor do texto digitado */
+}
+
+/* Remove o fundo branco quando o Chrome faz autofill */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  background-color: #74a9e6 !important;
+  -webkit-box-shadow: 0 0 0 1000px #74a9e6 inset !important;
+  -webkit-text-fill-color: #000 !important;
+  border-radius: 50px;
+}
+
+/* Impede o autocompletar de mudar o estilo */
+input:-internal-autofill-selected {
+  background-color: #74a9e6 !important;
 }

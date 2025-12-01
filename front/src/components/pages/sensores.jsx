@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import api from '../services/api';
 import Sidebar from '../utils/Sidebar';
-import '../styles/sensores.css';
+import '../styles/sensores.css';  // Estilos específicos (Tabela, Filtros, Badges)
 
 const Sensores = () => {
   const { tipo } = useParams();
@@ -53,7 +53,6 @@ const Sensores = () => {
         
         <header className="page-header">
           <h1 style={{ textTransform: 'capitalize' }}>
-            {/* Muda o título dinamicamente */}
             <span>📡</span> {tipo === 'todos' ? 'Todos os Sensores' : `Sensores de ${tipo}`}
           </h1>
         </header>
@@ -67,7 +66,6 @@ const Sensores = () => {
               onChange={handleTypeChange}
               className="filter-select"
             >
-              {/* Nova opção adicionada */}
               <option value="todos">Todos</option> 
               <option value="temperatura">Temperatura</option>
               <option value="umidade">Umidade</option>
@@ -91,7 +89,8 @@ const Sensores = () => {
                 <thead>
                   <tr>
                     <th>ID</th>
-                    <th>Tipo</th> {/* Adicionei a coluna Tipo, útil na visão "Todos" */}
+                    {/* Coluna Tipo aparece apenas quando estamos vendo "Todos" para facilitar a identificação */}
+                    {tipo === 'todos' && <th>Tipo</th>} 
                     <th>MAC Address</th>
                     <th>Local (Ambiente)</th>
                     <th>Status</th>
@@ -102,8 +101,7 @@ const Sensores = () => {
                   {sensores.map((sensor) => (
                     <tr key={sensor.id}>
                       <td>{sensor.id}</td>
-                      {/* Formata o tipo para ficar bonito (ex: Temperatura) */}
-                      <td style={{ textTransform: 'capitalize' }}>{sensor.tipo}</td>
+                      {tipo === 'todos' && <td style={{ textTransform: 'capitalize' }}>{sensor.tipo}</td>}
                       <td>{sensor.mac_address}</td>
                       <td>{sensor.ambiente_local || 'N/A'}</td> 
                       <td>

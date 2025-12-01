@@ -1,149 +1,132 @@
-/* ================= DASHBOARD STYLES ================= */
-
-/* Layout Geral: Sidebar fixa à esquerda, conteúdo à direita */
-.dashboard-container {
-  display: flex;
-  height: 100vh;
-  width: 100vw;
-  background-color: #dbeafe; /* Fundo azul bem claro */
-  font-family: 'Arial', sans-serif;
-  overflow: hidden; /* Evita barra de rolagem na página inteira */
-}
-
-
-
 /* --- CONTEÚDO PRINCIPAL --- */
 .main-content {
   flex: 1;
   padding: 40px 60px;
   display: flex;
   flex-direction: column;
-  overflow-y: auto; /* Permite rolar apenas o conteúdo se for pequeno */
+  overflow-y: auto;
   align-items: center;
+  gap: 60px; /* separação entre as seções */
 }
 
 /* Banner Hero */
 .hero-banner {
-  background-color: #8da4e3; /* O mesmo azul da sidebar */
+  background: linear-gradient(135deg, #97c4f7cc, #74a9e6cc);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
   width: 100%;
-  max-width: 900px;
-  border-radius: 20px;
-  padding: 40px;
+  max-width: 1500px; 
+  padding: 60px 40px;
+  border-radius: 25px;
   text-align: center;
-  color: #0d1b2a;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-  margin-bottom: 40px;
+  color: #000057;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  animation: fadeIn 1s ease forwards;
 }
-
 .hero-banner h1 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  font-family: 'Verdana', sans-serif;
+  background: linear-gradient(90deg, #000057, #2d3891);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
-
 .hero-banner p {
-  font-size: 1.1rem;
-  line-height: 1.5;
-  margin-bottom: 25px;
+  font-size: 22px;
+  line-height: 1.6;
   max-width: 80%;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
+  font-weight: 400;
 }
 
-.hero-button {
-  background-color: #dbeafe;
-  border: none;
-  padding: 10px 30px;
-  border-radius: 20px;
-  font-weight: bold;
-  color: #0d1b2a;
-  cursor: pointer;
-  font-size: 1rem;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
 
-/* Seção de Monitoramento */
+/* --- Seção de Monitoramento --- */
 .monitoring-section {
   width: 100%;
-  max-width: 900px;
+  max-width: 1100px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 10px;
 }
 
 .monitoring-header h2 {
-  font-size: 2rem;
-  color: #0d1b2a;
-  margin-bottom: 20px;
+  font-size: 42px;
+  color: #000057;
+  margin-bottom: 40px;
   display: flex;
   align-items: center;
   gap: 10px;
+  font-family: 'Poppins';
+  font-weight: 600;
 }
 
-/* Dropdown da Sala */
-.room-dropdown {
-  background-color: #8da4e3;
-  border: 1px solid #0d1b2a;
-  padding: 10px 20px;
-  border-radius: 10px;
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #0d1b2a;
-  cursor: pointer;
-  margin-bottom: 40px;
-  outline: none;
-}
-
-/* Grid dos Círculos */
+/* --- Grid dos Sensores --- */
 .sensor-grid {
   display: flex;
-  justify-content: center; /* Centraliza */
-  gap: 40px; /* Espaço entre as bolas */
+  justify-content: center;
+  gap: 40px;
   flex-wrap: wrap;
   width: 100%;
 }
 
+/* Bolinhas dos sensores */
 .sensor-circle {
-  width: 140px;
-  height: 140px;
+  width: 160px;
+  height: 160px;
   border-radius: 50%;
-  background-color: #8da4e3; /* Azul do tema */
-  border: 1px solid #0d1b2a; /* Borda fina escura igual imagem */
+  background: radial-gradient(circle, #74a9e6 40%, #5f94d8);
+  border: 2px solid #000057;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: transform 0.3s ease;
-  color: #0d1b2a;
+  transition: 0.3s ease;
+  color: #000057;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
 }
 
 .sensor-circle:hover {
-  transform: translateY(-5px);
-  background-color: #7b94d8;
+  transform: translateY(-6px) scale(1.06);
+  background: radial-gradient(circle, #9ecafd 30%, #74a9e6);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.18);
 }
 
+/* Ícones maiores */
 .sensor-icon {
-  font-size: 2rem;
-  margin-bottom: 5px;
+  font-size: 55px;
+  margin-bottom: 10px;
+  transition: transform 0.25s ease;
 }
 
-.sensor-label {
-  font-size: 0.8rem;
-  font-weight: bold;
-  margin-bottom: 5px;
+.sensor-circle:hover .sensor-icon {
+  transform: scale(1.15) rotate(5deg);
 }
 
-.sensor-value {
-  font-size: 1.5rem;
-  font-weight: normal;
+.sensor-circle {
+  opacity: 0;
+  animation: fadeUp 0.7s ease forwards;
+}
+
+.sensor-circle:nth-child(1) { animation-delay: 0.1s; }
+.sensor-circle:nth-child(2) { animation-delay: 0.25s; }
+.sensor-circle:nth-child(3) { animation-delay: 0.4s; }
+.sensor-circle:nth-child(4) { animation-delay: 0.55s; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* Rodapé */
 .dashboard-footer {
-  margin-top: auto; /* Empurra para o final */
-  padding-top: 40px;
+  margin-top: 60px;
+  padding-bottom: 20px;
   font-size: 0.9rem;
-  color: #0d1b2a;
+  color: #000057;
   font-style: italic;
+  text-align: center;
 }

@@ -1,40 +1,36 @@
-/* ================= SENSORES STYLES ================= */
-
-/* Estilo para as etiquetas de status */
-.status-badge {
-  display: inline-block;
-  padding: 6px 12px;
+.page-header {
+  background-color: #74a9e6;
+  width: 900px;
+  height: 100;
+  padding: 20px;
   border-radius: 20px;
-  font-size: 0.85rem;
-  font-weight: bold;
+  border: 2px solid #2b4cba;
   text-align: center;
-  min-width: 80px; /* Garante que tenham o mesmo tamanho visual */
+  color: #0d1b2a;
+  font-family: 'Verdana', sans-serif;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-.status-active {
-  background-color: #d1fae5; /* Verde claro fundo */
-  color: #065f46; /* Verde escuro texto */
-  border: 1px solid #34d399; /* Borda verde */
-}
-
-.status-inactive {
-  background-color: #fee2e2; /* Vermelho claro fundo */
-  color: #991b1b; /* Vermelho escuro texto */
-  border: 1px solid #f87171; /* Borda vermelha */
-}
-
-/* Ajuste fino para a tabela de sensores não ficar apertada */
-.custom-table td {
-  vertical-align: middle; /* Centraliza verticalmente o texto com o badge */
-}
-
-/* ================= FILTROS E DROPDOWNS ================= */
-
-/* Atualiza o container da barra para alinhar os itens */
-.search-bar-container {
+.page-header h1 {
+  margin: 0;
+  font-size: 2rem;
   display: flex;
-  align-items: center; /* Centraliza verticalmente */
-  padding: 0 25px;     /* Espaçamento interno */
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+/* --- Barra de Filtros e Dropdown --- */
+.search-bar-container {
+  background-color: #74a9e6;
+  width: 1700px;
+  height: 60px;
+  border-radius: 15px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  padding: 0 25px;
   gap: 20px;
 }
 
@@ -47,12 +43,11 @@
   font-size: 0.95rem;
 }
 
-/* Estilo do Select (Dropdown) */
 .filter-select {
-  background-color: rgba(255, 255, 255, 0.4); /* Fundo translúcido */
-  border: 1px solid #2b4cba;
+  background-color: rgba(255, 255, 255, 0.4);
+  border: 1px solid #215591;
   border-radius: 20px;
-  padding: 5px 15px;
+  padding: 8px 15px;
   color: #0d1b2a;
   font-size: 0.9rem;
   font-weight: bold;
@@ -66,6 +61,88 @@
 }
 
 .filter-select option {
-  background-color: #ffffff; /* Fundo branco nas opções para legibilidade */
+  background-color: #ffffff;
   color: #0d1b2a;
+}
+
+/* --- Caixa de Conteúdo (Com Rolagem) --- */
+.content-box {
+  background-color: #aabce6;
+  width: 900px;
+  height: 900px;
+  flex: 1; /* Ocupa o espaço vertical restante */
+  border-radius: 20px;
+  padding: 30px;
+  overflow: hidden; /* Impede que conteúdo saia da borda redonda */
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Container da tabela para permitir rolagem apenas na tabela */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: auto; /* Ativa rolagem vertical */
+  flex: 1;          /* Faz ocupar todo a altura disponível */
+  padding-right: 5px;
+}
+
+/* Tabela Personalizada */
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #0d1b2a;
+}
+
+/* Fixa o cabeçalho no topo ao rolar */
+.custom-table thead th {
+  position: sticky;
+  top: 0;
+  background-color: #bfdbfe; /* Cor de fundo opaca para cobrir o conteúdo ao rolar */
+  z-index: 1;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.1);
+  padding: 15px;
+  text-align: left;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.custom-table tbody tr {
+  border-bottom: 1px solid rgba(43, 76, 186, 0.3);
+  transition: background-color 0.2s;
+}
+
+.custom-table td {
+  padding: 15px;
+  font-size: 1rem;
+  vertical-align: middle;
+}
+
+.custom-table tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* --- Badges de Status --- */
+.status-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-align: center;
+  min-width: 80px;
+}
+
+.status-active {
+  background-color: #d9fad1;
+  color: #065f46;
+  border: 1px solid #34d399;
+}
+
+.status-inactive {
+  background-color: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #f87171;
 }

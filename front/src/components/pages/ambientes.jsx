@@ -30,11 +30,7 @@ const Ambientes = () => {
         <header className="page-header">
           <h1><span>🏢</span> Ambientes</h1>
         </header>
-
-        <div className="search-bar-container">
-          {/* Espaço para filtros futuros */}
-        </div>
-
+        
         <section className="content-box">
           {loading && <p>Carregando dados...</p>}
 

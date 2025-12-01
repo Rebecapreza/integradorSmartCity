@@ -1,12 +1,9 @@
-/* ================= AMBIENTES STYLES ================= */
-
-/* Cabeçalho da Página (Caixa Superior) */
 .page-header {
-  background-color: #8da4e3; /* Azul médio */
+  background-color: #74a9e6; /* Azul médio */
   width: 100%;
   padding: 20px;
   border-radius: 20px;
-  border: 2px solid #2b4cba; /* Borda azul escura */
+  border: 2px solid #215591; /* Borda azul escura */
   text-align: center;
   color: #0d1b2a;
   font-family: 'Verdana', sans-serif;
@@ -25,7 +22,7 @@
 
 /* Caixa de Conteúdo Principal (Onde fica a tabela) */
 .content-box {
-  background-color: #aabce6; /* Azul suave */
+  background-color: #98c7fc; /* Azul suave */
   width: 100%;
   flex: 1; /* Ocupa o resto do espaço */
   border-radius: 20px;
@@ -47,7 +44,7 @@
 }
 
 .custom-table thead tr {
-  border-bottom: 2px solid #2b4cba;
+  border-bottom: 2px solid #215591;
 }
 
 .custom-table th {
