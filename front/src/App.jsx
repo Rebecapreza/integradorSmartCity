@@ -4,6 +4,7 @@ import Cadastro from "./components/pages/cadastro";
 import Home from "./components/pages/home";
 import Sensores from "./components/pages/sensores"; // Importe a nova página
 import PrivateRoute from "./components/utils/privateRoute"; // Importe o Guard
+import Ambientes from "./components/pages/ambientes";
 
 function App() {
   return (
@@ -11,7 +12,6 @@ function App() {
       <Routes>
         {/* Rotas Públicas */}
         <Route path="/login" element={<Login />} />
-        <Route path="/cadastro" element={<Cadastro />} />
 
         {/* Redirecionar raiz para login */}
         <Route path="/" element={<Navigate to="/login" replace />} />
