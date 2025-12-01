@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import api from '../services/api'; 
 import { useNavigate } from 'react-router-dom';
-import '../styles/style.css'; 
-import logo from '../assets/Logo.png';
+import '../styles/login.css'; 
+import logo from '/src/assets/Logo.png';
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -81,11 +81,6 @@ const Login = () => {
             Entrar
           </button>
         </form>
-
-        <p className="signup-text">
-          Não tem uma conta? <a href="/cadastro" className="signup-link">Cadastre-se</a>
-        </p>
-
       </section>
     </main>
   );

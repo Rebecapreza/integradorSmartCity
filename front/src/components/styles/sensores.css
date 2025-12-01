@@ -1,0 +1,71 @@
+/* ================= SENSORES STYLES ================= */
+
+/* Estilo para as etiquetas de status */
+.status-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-align: center;
+  min-width: 80px; /* Garante que tenham o mesmo tamanho visual */
+}
+
+.status-active {
+  background-color: #d1fae5; /* Verde claro fundo */
+  color: #065f46; /* Verde escuro texto */
+  border: 1px solid #34d399; /* Borda verde */
+}
+
+.status-inactive {
+  background-color: #fee2e2; /* Vermelho claro fundo */
+  color: #991b1b; /* Vermelho escuro texto */
+  border: 1px solid #f87171; /* Borda vermelha */
+}
+
+/* Ajuste fino para a tabela de sensores não ficar apertada */
+.custom-table td {
+  vertical-align: middle; /* Centraliza verticalmente o texto com o badge */
+}
+
+/* ================= FILTROS E DROPDOWNS ================= */
+
+/* Atualiza o container da barra para alinhar os itens */
+.search-bar-container {
+  display: flex;
+  align-items: center; /* Centraliza verticalmente */
+  padding: 0 25px;     /* Espaçamento interno */
+  gap: 20px;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #0d1b2a;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+/* Estilo do Select (Dropdown) */
+.filter-select {
+  background-color: rgba(255, 255, 255, 0.4); /* Fundo translúcido */
+  border: 1px solid #2b4cba;
+  border-radius: 20px;
+  padding: 5px 15px;
+  color: #0d1b2a;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s;
+}
+
+.filter-select:hover {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.filter-select option {
+  background-color: #ffffff; /* Fundo branco nas opções para legibilidade */
+  color: #0d1b2a;
+}

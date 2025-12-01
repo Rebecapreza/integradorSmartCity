@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import api from '../../services/api';
-import '../styles/style.css';
+import api from '../services/api';
+import Sidebar from '../utils/Sidebar'; // <--- Importe a Sidebar aqui
+import '../styles/ambientes.css';
 
 const Ambientes = () => {
-  const navigate = useNavigate();
   const [ambientes, setAmbientes] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -23,39 +22,50 @@ const Ambientes = () => {
   }, []);
 
   return (
-    <div className="login-container" style={{ alignItems: 'flex-start', paddingTop: '50px', overflowY: 'auto' }}>
-      <div className="login-card" style={{ maxWidth: '800px' }}>
-        
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
-            <h2>Ambientes da Escola</h2>
-            <button onClick={() => navigate('/home')} className="login-button" style={{ width: 'auto', backgroundColor: '#64748b', color: 'white', marginTop: 0 }}>
-                Voltar
-            </button>
+    <div className="dashboard-container">
+      {/* Sidebar Reutilizável */}
+      <Sidebar />
+
+      <main className="main-content">
+        <header className="page-header">
+          <h1><span>🏢</span> Ambientes</h1>
+        </header>
+
+        <div className="search-bar-container">
+          {/* Espaço para filtros futuros */}
         </div>
 
-        {loading && <p>Carregando...</p>}
+        <section className="content-box">
+          {loading && <p>Carregando dados...</p>}
 
-        {!loading && (
-          <table style={{ width: '100%', marginTop: '20px', borderCollapse: 'collapse' }}>
-            <thead>
-              <tr style={{ backgroundColor: '#bfdbfe', color: '#1e3a8a' }}>
-                <th style={{ padding: '10px' }}>ID</th>
-                <th style={{ padding: '10px' }}>Nome da Sala</th>
-                <th style={{ padding: '10px' }}>Responsável</th>
-              </tr>
-            </thead>
-            <tbody>
-              {ambientes.map((amb) => (
-                <tr key={amb.id} style={{ borderBottom: '1px solid #cbd5e1' }}>
-                  <td style={{ padding: '10px' }}>{amb.id}</td>
-                  <td style={{ padding: '10px' }}>{amb.descricao}</td> 
-                  <td style={{ padding: '10px' }}>{amb.responsavel_nome || amb.responsavel}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        )}
-      </div>
+          {!loading && (
+            <div className="table-responsive">
+              <table className="custom-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Nome da Sala</th>
+                    <th>Responsável</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {ambientes.map((amb) => (
+                    <tr key={amb.id}>
+                      <td>{amb.id}</td>
+                      <td>{amb.descricao || amb.local}</td> 
+                      <td>{amb.responsavel_nome || amb.responsavel || '-'}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </section>
+
+        <footer className="dashboard-footer">
+          SmartCity Project © Todos os direitos reservados
+        </footer>
+      </main>
     </div>
   );
 };

@@ -1,56 +1,79 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/style.css'; // Reaproveitando seu CSS
+import Sidebar from '../utils/Sidebar'; // <--- Importe a Sidebar aqui
+import '../styles/home.css'; 
 
 const Home = () => {
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('refresh_token');
-    navigate('/login');
-  };
-
-  // Função para navegar para a lista filtrada
+  // Função para navegar pelos botões do dashboard
   const irParaSensor = (tipo) => {
     navigate(`/sensores/${tipo}`);
   };
 
   return (
-    <main className="login-container" style={{ flexDirection: 'column', gap: '20px' }}>
-      <header style={{ width: '100%', maxWidth: '800px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1rem', backgroundColor: '#93c5fd', borderRadius: '15px' }}>
-        <h1 style={{ margin: 0, color: '#0d1b2a' }}>Smart City Dashboard</h1>
-        <button onClick={handleLogout} className="login-button" style={{ width: 'auto', padding: '10px 20px', marginTop: 0, backgroundColor: '#ef4444', color: 'white' }}>
-          Sair
-        </button>
-      </header>
+    <div className="dashboard-container">
+      {/* Usando o componente Sidebar isolado */}
+      <Sidebar />
 
-      <section className="login-card" style={{ maxWidth: '800px', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center' }}>
+      {/* --- Conteúdo Principal --- */}
+      <main className="main-content">
         
-        <div style={{ width: '100%', marginBottom: '20px' }}>
-            <h2>Monitoramento em Tempo Real</h2>
-            <p>Selecione um tipo de sensor para visualizar:</p>
-        </div>
+        <section className="hero-banner">
+          <h1>Bem-vindo ao SmartCity!</h1>
+          <p>
+            Monitore em tempo real temperatura, umidade, luminosidade e 
+            fluxo de pessoas. Tenha controle total e insights visuais para a 
+            gestão eficiente dos ambientes.
+          </p>
+          <button className="hero-button">Saiba mais</button>
+        </section>
 
-        {/* Botões do Dashboard */}
-        <button className="login-button" style={{ width: '45%', margin: '10px' }} onClick={() => irParaSensor('temperatura')}>
-          🌡️ Temperatura
-        </button>
-        
-        <button className="login-button" style={{ width: '45%', margin: '10px' }} onClick={() => irParaSensor('umidade')}>
-          💧 Umidade
-        </button>
-        
-        <button className="login-button" style={{ width: '45%', margin: '10px' }} onClick={() => irParaSensor('luminosidade')}>
-          💡 Luminosidade
-        </button>
-        
-        <button className="login-button" style={{ width: '45%', margin: '10px' }} onClick={() => irParaSensor('contador')}>
-          Yz Contador
-        </button>
+        <section className="monitoring-section">
+          <div className="monitoring-header">
+            <h2>☁️ Monitoramento real</h2>
+          </div>
 
-      </section>
-    </main>
+          <div className="room-selector">
+            <select className="room-dropdown">
+              <option>Sala A201</option>
+              <option>Sala B104</option>
+              <option>Lab Informática</option>
+            </select>
+          </div>
+
+          <div className="sensor-grid">
+            <div className="sensor-circle" onClick={() => irParaSensor('temperatura')}>
+              <span className="sensor-icon">🌡️</span>
+              <span className="sensor-label">Temperatura</span>
+              <span className="sensor-value">25°C</span>
+            </div>
+
+            <div className="sensor-circle" onClick={() => irParaSensor('umidade')}>
+              <span className="sensor-icon">💧</span>
+              <span className="sensor-label">Umidade</span>
+              <span className="sensor-value">80%</span>
+            </div>
+
+            <div className="sensor-circle" onClick={() => irParaSensor('luminosidade')}>
+              <span className="sensor-icon">☀️</span>
+              <span className="sensor-label">Luminosidade</span>
+              <span className="sensor-value">50%</span>
+            </div>
+
+            <div className="sensor-circle" onClick={() => irParaSensor('contador')}>
+              <span className="sensor-icon">👥</span>
+              <span className="sensor-label">Pessoas</span>
+              <span className="sensor-value">28</span>
+            </div>
+          </div>
+        </section>
+
+        <footer className="dashboard-footer">
+          SmartCity Project © Todos os direitos reservados
+        </footer>
+      </main>
+    </div>
   );
 };
 

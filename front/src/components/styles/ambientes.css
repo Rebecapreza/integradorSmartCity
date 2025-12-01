@@ -1,0 +1,78 @@
+/* ================= AMBIENTES STYLES ================= */
+
+/* Cabeçalho da Página (Caixa Superior) */
+.page-header {
+  background-color: #8da4e3; /* Azul médio */
+  width: 100%;
+  padding: 20px;
+  border-radius: 20px;
+  border: 2px solid #2b4cba; /* Borda azul escura */
+  text-align: center;
+  color: #0d1b2a;
+  font-family: 'Verdana', sans-serif;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.page-header h1 {
+  margin: 0;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Caixa de Conteúdo Principal (Onde fica a tabela) */
+.content-box {
+  background-color: #aabce6; /* Azul suave */
+  width: 100%;
+  flex: 1; /* Ocupa o resto do espaço */
+  border-radius: 20px;
+  padding: 30px;
+  overflow: hidden;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.05); /* Sombra interna sutil */
+}
+
+/* --- Estilização da Tabela para o Tema Azul --- */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #0d1b2a;
+}
+
+.custom-table thead tr {
+  border-bottom: 2px solid #2b4cba;
+}
+
+.custom-table th {
+  padding: 15px;
+  text-align: left;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #0d1b2a;
+}
+
+.custom-table tbody tr {
+  border-bottom: 1px solid rgba(43, 76, 186, 0.3); /* Linha divisória sutil */
+  transition: background-color 0.2s;
+}
+
+.custom-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.custom-table td {
+  padding: 15px;
+  font-size: 1rem;
+}
+
+.custom-table tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Efeito hover leve */
+}

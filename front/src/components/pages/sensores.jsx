@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import api from '../../services/api';
-import '../styles/style.css';
+import api from '../services/api';
+import Sidebar from '../utils/Sidebar';
+import '../styles/sensores.css';
 
 const Sensores = () => {
-  const { tipo } = useParams(); // Pega o tipo da URL (ex: temperatura)
+  const { tipo } = useParams();
   const navigate = useNavigate();
   const [sensores, setSensores] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -12,13 +13,22 @@ const Sensores = () => {
 
   useEffect(() => {
     const fetchSensores = async () => {
+      setLoading(true);
       try {
-        // O backend espera ?tipo=temperatura (icontains)
-        const response = await api.get(`/sensores/?tipo=${tipo}`);
+        let url = '/sensores/';
+        
+        // Se o tipo NÃO for "todos", aplica o filtro. 
+        // Se for "todos", chama a rota pura para trazer tudo.
+        if (tipo && tipo !== 'todos') {
+          url = `/sensores/?tipo=${tipo}`;
+        }
+
+        const response = await api.get(url);
         setSensores(response.data);
+        setErro('');
       } catch (err) {
         console.error(err);
-        setErro('Erro ao carregar sensores. Verifique se você está logado.');
+        setErro('Erro ao carregar sensores.');
         if (err.response && err.response.status === 401) {
             navigate('/login');
         }
@@ -30,51 +40,90 @@ const Sensores = () => {
     fetchSensores();
   }, [tipo, navigate]);
 
+  const handleTypeChange = (e) => {
+    const novoTipo = e.target.value;
+    navigate(`/sensores/${novoTipo}`);
+  };
+
   return (
-    <div className="login-container" style={{ alignItems: 'flex-start', paddingTop: '50px', overflowY: 'auto' }}>
-      <div className="login-card" style={{ maxWidth: '900px' }}>
+    <div className="dashboard-container">
+      <Sidebar />
+
+      <main className="main-content">
         
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
-            <h2 style={{ textTransform: 'capitalize' }}>Sensores de {tipo}</h2>
-            <button onClick={() => navigate('/home')} className="login-button" style={{ width: 'auto', backgroundColor: '#64748b', color: 'white', marginTop: 0 }}>
-                Voltar
-            </button>
+        <header className="page-header">
+          <h1 style={{ textTransform: 'capitalize' }}>
+            {/* Muda o título dinamicamente */}
+            <span>📡</span> {tipo === 'todos' ? 'Todos os Sensores' : `Sensores de ${tipo}`}
+          </h1>
+        </header>
+
+        <div className="search-bar-container">
+          <div className="filter-group">
+            <label htmlFor="sensor-type">Filtrar por:</label>
+            <select 
+              id="sensor-type" 
+              value={tipo} 
+              onChange={handleTypeChange}
+              className="filter-select"
+            >
+              {/* Nova opção adicionada */}
+              <option value="todos">Todos</option> 
+              <option value="temperatura">Temperatura</option>
+              <option value="umidade">Umidade</option>
+              <option value="luminosidade">Luminosidade</option>
+              <option value="contador">Contador</option>
+            </select>
+          </div>
         </div>
 
-        {loading && <p>Carregando dados...</p>}
-        {erro && <p style={{ color: 'red' }}>{erro}</p>}
+        <section className="content-box">
+          {loading && <p style={{ padding: '20px' }}>Carregando dados...</p>}
+          {erro && <p style={{ color: 'red', padding: '20px' }}>{erro}</p>}
 
-        {!loading && !erro && sensores.length === 0 && (
-            <p>Nenhum sensor encontrado deste tipo.</p>
-        )}
+          {!loading && !erro && sensores.length === 0 && (
+              <p style={{ padding: '20px' }}>Nenhum sensor encontrado.</p>
+          )}
 
-        {!loading && sensores.length > 0 && (
-          <table style={{ width: '100%', marginTop: '20px', borderCollapse: 'collapse' }}>
-            <thead>
-              <tr style={{ backgroundColor: '#bfdbfe', color: '#1e3a8a' }}>
-                <th style={{ padding: '10px' }}>ID</th>
-                <th style={{ padding: '10px' }}>MAC Address</th>
-                <th style={{ padding: '10px' }}>Local (Ambiente)</th>
-                <th style={{ padding: '10px' }}>Status</th>
-                <th style={{ padding: '10px' }}>Unidade</th>
-              </tr>
-            </thead>
-            <tbody>
-              {sensores.map((sensor) => (
-                <tr key={sensor.id} style={{ borderBottom: '1px solid #cbd5e1' }}>
-                  <td style={{ padding: '10px' }}>{sensor.id}</td>
-                  <td style={{ padding: '10px' }}>{sensor.mac_address}</td>
-                  <td style={{ padding: '10px' }}>{sensor.ambiente_local || 'N/A'}</td> 
-                  <td style={{ padding: '10px', color: sensor.status ? 'green' : 'red', fontWeight: 'bold' }}>
-                    {sensor.status ? 'Ativo' : 'Inativo'}
-                  </td>
-                  <td style={{ padding: '10px' }}>{sensor.unidade_medida}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        )}
-      </div>
+          {!loading && sensores.length > 0 && (
+            <div className="table-responsive">
+              <table className="custom-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Tipo</th> {/* Adicionei a coluna Tipo, útil na visão "Todos" */}
+                    <th>MAC Address</th>
+                    <th>Local (Ambiente)</th>
+                    <th>Status</th>
+                    <th>Unidade</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {sensores.map((sensor) => (
+                    <tr key={sensor.id}>
+                      <td>{sensor.id}</td>
+                      {/* Formata o tipo para ficar bonito (ex: Temperatura) */}
+                      <td style={{ textTransform: 'capitalize' }}>{sensor.tipo}</td>
+                      <td>{sensor.mac_address}</td>
+                      <td>{sensor.ambiente_local || 'N/A'}</td> 
+                      <td>
+                        <span className={`status-badge ${sensor.status ? 'status-active' : 'status-inactive'}`}>
+                          {sensor.status ? 'Ativo' : 'Inativo'}
+                        </span>
+                      </td>
+                      <td>{sensor.unidade_medida}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </section>
+
+        <footer className="dashboard-footer">
+          SmartCity Project © Todos os direitos reservados
+        </footer>
+      </main>
     </div>
   );
 };

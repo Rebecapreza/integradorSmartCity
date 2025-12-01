@@ -18,7 +18,8 @@ class AmbienteSerializer(serializers.ModelSerializer):
         fields = ['id', 'local', 'descricao', 'responsavel', 'responsavel_nome']
 
 class SensorSerializer(serializers.ModelSerializer):
-    ambiente_local = serializers.ReadOnlyField(source='ambiente.local')
+    # Usamos SerializerMethodField para evitar erro se o ambiente for None
+    ambiente_local = serializers.SerializerMethodField()
 
     class Meta:
         model = Sensor
@@ -27,6 +28,12 @@ class SensorSerializer(serializers.ModelSerializer):
             'localizacao', 'unidade_medida', 'status', 'observacao', 
             'ambiente', 'ambiente_local', 'created_at'
         ]
+
+    def get_ambiente_local(self, obj):
+        # Se existe um ambiente e esse ambiente tem um local, retorna o nome do local
+        if obj.ambiente and obj.ambiente.local:
+            return str(obj.ambiente.local)
+        return "Sem ambiente"
 
 class HistoricoSerializer(serializers.ModelSerializer):
     class Meta:

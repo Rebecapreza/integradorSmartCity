@@ -1,0 +1,127 @@
+/* Container principal - Fundo Azul Claro */
+.login-container {
+  background-color: #dbeafe;
+  /* Tom azul claro da imagem */
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* O Cartão Central - Azul "Periwinkle" mais escuro */
+.login-card {
+  background-color: #749DE6;
+  padding: 3rem 2rem;
+  border-radius: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  width: 500px;
+  height: 500px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+/* Área da Logo */
+.logo-area {
+  margin-bottom: -10px;
+  display: flex;
+  justify-content: center;
+}
+
+.logo-img {
+  width: 130px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Título "Login" */
+.login-title {
+  color: #000057;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 3rem;
+  font-weight: 400;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+/* Grupo de Inputs */
+.input-group {
+  width: 400px;
+}
+
+.login-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px; /* Isso cria o espaçamento exato entre os inputs */
+  align-items: center; /* Centraliza o botão e inputs */
+}
+
+/* Estilo dos Campos de Texto */
+.input-group input {
+  width: 100%;
+  padding: 15px 25px;
+  border: none;
+  border-radius: 50px;
+  background-color: rgba(255, 255, 255, 0.25);
+  color: #1e3a8a;
+  font-size: 0.95rem;
+  outline: none;
+  transition: background-color 0.3s ease;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+/* Placeholder - Cor azulada suave */
+.input-group input::placeholder {
+  color: #CDDFFF;
+  font-weight: 500;
+}
+
+/* Efeito ao clicar no input */
+.input-group input:focus {
+  background-color: #99bcfa;
+  box-shadow: #86b0f7;
+}
+
+/* Botão Entrar */
+.login-button {
+  width: 150px;
+  padding: 12px 0;
+  border: none;
+  border-radius: 50px;
+  background-color: #CDDFFF;
+  color: #000057;
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: 'Times New Roman', Times, serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Efeito Hover no Botão */
+.login-button:hover {
+  background-color: #d9e5fa;
+  transform: translateY(-1px);
+}
+
+/* Acessibilidade */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

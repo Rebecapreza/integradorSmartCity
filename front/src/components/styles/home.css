@@ -1,0 +1,149 @@
+/* ================= DASHBOARD STYLES ================= */
+
+/* Layout Geral: Sidebar fixa à esquerda, conteúdo à direita */
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  background-color: #dbeafe; /* Fundo azul bem claro */
+  font-family: 'Arial', sans-serif;
+  overflow: hidden; /* Evita barra de rolagem na página inteira */
+}
+
+
+
+/* --- CONTEÚDO PRINCIPAL --- */
+.main-content {
+  flex: 1;
+  padding: 40px 60px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; /* Permite rolar apenas o conteúdo se for pequeno */
+  align-items: center;
+}
+
+/* Banner Hero */
+.hero-banner {
+  background-color: #8da4e3; /* O mesmo azul da sidebar */
+  width: 100%;
+  max-width: 900px;
+  border-radius: 20px;
+  padding: 40px;
+  text-align: center;
+  color: #0d1b2a;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  margin-bottom: 40px;
+}
+
+.hero-banner h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-family: 'Verdana', sans-serif;
+}
+
+.hero-banner p {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  margin-bottom: 25px;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-button {
+  background-color: #dbeafe;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 20px;
+  font-weight: bold;
+  color: #0d1b2a;
+  cursor: pointer;
+  font-size: 1rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Seção de Monitoramento */
+.monitoring-section {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.monitoring-header h2 {
+  font-size: 2rem;
+  color: #0d1b2a;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Dropdown da Sala */
+.room-dropdown {
+  background-color: #8da4e3;
+  border: 1px solid #0d1b2a;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #0d1b2a;
+  cursor: pointer;
+  margin-bottom: 40px;
+  outline: none;
+}
+
+/* Grid dos Círculos */
+.sensor-grid {
+  display: flex;
+  justify-content: center; /* Centraliza */
+  gap: 40px; /* Espaço entre as bolas */
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.sensor-circle {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background-color: #8da4e3; /* Azul do tema */
+  border: 1px solid #0d1b2a; /* Borda fina escura igual imagem */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  color: #0d1b2a;
+}
+
+.sensor-circle:hover {
+  transform: translateY(-5px);
+  background-color: #7b94d8;
+}
+
+.sensor-icon {
+  font-size: 2rem;
+  margin-bottom: 5px;
+}
+
+.sensor-label {
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.sensor-value {
+  font-size: 1.5rem;
+  font-weight: normal;
+}
+
+/* Rodapé */
+.dashboard-footer {
+  margin-top: auto; /* Empurra para o final */
+  padding-top: 40px;
+  font-size: 0.9rem;
+  color: #0d1b2a;
+  font-style: italic;
+}
