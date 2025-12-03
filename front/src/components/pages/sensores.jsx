@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import api from '../services/api';
 import Sidebar from '../utils/Sidebar';
-import '../styles/sensores.css';  // Estilos específicos (Tabela, Filtros, Badges)
+import '../styles/sensores.css';
 
 const Sensores = () => {
   const { tipo } = useParams();
@@ -17,8 +17,6 @@ const Sensores = () => {
       try {
         let url = '/sensores/';
         
-        // Se o tipo NÃO for "todos", aplica o filtro. 
-        // Se for "todos", chama a rota pura para trazer tudo.
         if (tipo && tipo !== 'todos') {
           url = `/sensores/?tipo=${tipo}`;
         }
@@ -43,6 +41,21 @@ const Sensores = () => {
   const handleTypeChange = (e) => {
     const novoTipo = e.target.value;
     navigate(`/sensores/${novoTipo}`);
+  };
+
+  const handleDelete = async (id) => {
+    const confirmacao = window.confirm("Tem certeza que deseja excluir este sensor?");
+    if (confirmacao) {
+      try {
+        await api.delete(`/sensores/${id}/`);
+        // Atualiza a lista visualmente removendo o item deletado
+        setSensores(sensores.filter(sensor => sensor.id !== id));
+        alert("Sensor excluído com sucesso!");
+      } catch (err) {
+        console.error("Erro ao excluir", err);
+        alert("Erro ao excluir. Verifique se o sensor possui históricos vinculados.");
+      }
+    }
   };
 
   return (
@@ -89,12 +102,12 @@ const Sensores = () => {
                 <thead>
                   <tr>
                     <th>ID</th>
-                    {/* Coluna Tipo aparece apenas quando estamos vendo "Todos" para facilitar a identificação */}
                     {tipo === 'todos' && <th>Tipo</th>} 
                     <th>MAC Address</th>
                     <th>Local (Ambiente)</th>
                     <th>Status</th>
                     <th>Unidade</th>
+                    <th>Ações</th> 
                   </tr>
                 </thead>
                 <tbody>
@@ -110,6 +123,22 @@ const Sensores = () => {
                         </span>
                       </td>
                       <td>{sensor.unidade_medida}</td>
+                      <td>
+                        <button 
+                          onClick={() => handleDelete(sensor.id)}
+                          style={{
+                            cursor: 'pointer',
+                            backgroundColor: '#ef4444',
+                            color: 'white',
+                            border: 'none',
+                            padding: '5px 10px',
+                            borderRadius: '5px',
+                            fontWeight: 'bold'
+                          }}
+                        >
+                          Excluir
+                        </button>
+                      </td>
                     </tr>
                   ))}
                 </tbody>

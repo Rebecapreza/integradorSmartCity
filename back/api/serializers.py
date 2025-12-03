@@ -40,7 +40,16 @@ class HistoricoSerializer(serializers.ModelSerializer):
         model = Historico
         fields = '__all__'
 
-# === Serializer de Registro de Usuário (Mantido para o Login) ===
+    def validate(self, data):
+        sensor = data.get('sensor')
+        # Verifica se o sensor existe e se o status é False (Inativo)
+        if sensor and not sensor.status:
+            raise serializers.ValidationError(
+                {"sensor": "Não é permitido registrar medições para um sensor inativo."}
+            )
+        return data
+
+# Serializer de Registro de Usuário (Mantido para o Login) 
 class RegisterSerializer(serializers.ModelSerializer):
     username = serializers.CharField(
         required=True,
