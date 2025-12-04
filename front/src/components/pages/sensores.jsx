@@ -16,11 +16,9 @@ const Sensores = () => {
       setLoading(true);
       try {
         let url = '/sensores/';
-        
         if (tipo && tipo !== 'todos') {
           url = `/sensores/?tipo=${tipo}`;
         }
-
         const response = await api.get(url);
         setSensores(response.data);
         setErro('');
@@ -34,26 +32,22 @@ const Sensores = () => {
         setLoading(false);
       }
     };
-
     fetchSensores();
   }, [tipo, navigate]);
 
   const handleTypeChange = (e) => {
-    const novoTipo = e.target.value;
-    navigate(`/sensores/${novoTipo}`);
+    navigate(`/sensores/${e.target.value}`);
   };
 
   const handleDelete = async (id) => {
-    const confirmacao = window.confirm("Tem certeza que deseja excluir este sensor?");
-    if (confirmacao) {
+    if (window.confirm("Tem certeza que deseja excluir este sensor?")) {
       try {
         await api.delete(`/sensores/${id}/`);
-        // Atualiza a lista visualmente removendo o item deletado
         setSensores(sensores.filter(sensor => sensor.id !== id));
         alert("Sensor excluído com sucesso!");
       } catch (err) {
         console.error("Erro ao excluir", err);
-        alert("Erro ao excluir. Verifique se o sensor possui históricos vinculados.");
+        alert("Erro ao excluir. Verifique vínculos.");
       }
     }
   };
@@ -61,7 +55,6 @@ const Sensores = () => {
   return (
     <div className="dashboard-container">
       <Sidebar />
-
       <main className="main-content">
         
         <header className="page-header">
@@ -86,6 +79,10 @@ const Sensores = () => {
               <option value="contador">Contador</option>
             </select>
           </div>
+
+          <button className="btn-add" onClick={() => navigate('/sensores/novo')}>
+            <span>+</span> Novo Sensor
+          </button>
         </div>
 
         <section className="content-box">
@@ -123,20 +120,22 @@ const Sensores = () => {
                         </span>
                       </td>
                       <td>{sensor.unidade_medida}</td>
-                      <td>
+                      
+                      <td className="action-cell">
                         <button 
-                          onClick={() => handleDelete(sensor.id)}
-                          style={{
-                            cursor: 'pointer',
-                            backgroundColor: '#ef4444',
-                            color: 'white',
-                            border: 'none',
-                            padding: '5px 10px',
-                            borderRadius: '5px',
-                            fontWeight: 'bold'
-                          }}
+                          className="btn-action btn-edit"
+                          onClick={() => navigate(`/sensores/editar/${sensor.id}`)}
+                          title="Editar"
                         >
-                          Excluir
+                          ✏️
+                        </button>
+
+                        <button 
+                          className="btn-action btn-delete"
+                          onClick={() => handleDelete(sensor.id)}
+                          title="Excluir"
+                        >
+                          🗑️
                         </button>
                       </td>
                     </tr>

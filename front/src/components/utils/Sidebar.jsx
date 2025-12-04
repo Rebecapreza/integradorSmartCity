@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import '../styles/sidebar.css';
 import logo from '../../assets/Logo.png';
 
+
 const Sidebar = () => {
   const navigate = useNavigate();
   const location = useLocation(); // Hook para saber em qual URL estamos
@@ -23,36 +24,47 @@ const Sidebar = () => {
       <div className="sidebar-logo">
         <img src={logo} alt="Logo" className="sidebar-logo-img" />
       </div>
-      
+
       <nav className="sidebar-nav">
-        <button 
-          className={isActive('/home')} 
+        <button
+          className={isActive('/home')}
           onClick={() => navigate('/home')}
         >
-          <span className="nav-icon">🏠</span> 
+          <span className="nav-icon material-symbols-outlined">home</span>
           <span>Home</span>
         </button>
 
-        <button 
-          className={isActive('/ambientes')} 
+        <button
+          className={isActive('/ambientes')}
           onClick={() => navigate('/ambientes')}
         >
-          <span className="nav-icon">🏢</span> 
+          <span className="nav-icon material-symbols-outlined">business</span>
           <span>Ambientes</span>
         </button>
 
-        <button 
-          className={isActive('/sensores')} 
+        <button
+          className={isActive('/sensores')}
           onClick={() => navigate('/sensores/temperatura')}
         >
-          <span className="nav-icon">📡</span> 
+          <span className="nav-icon material-symbols-outlined">sensors</span>
           <span>Sensores</span>
         </button>
 
+        <button
+          className={isActive('/responsaveis')}
+          onClick={() => navigate('/responsaveis')}
+        >
+          <span className="nav-icon material-symbols-outlined">groups</span>
+          <span>Responsáveis</span>
+        </button>
+
         <button className="nav-item" onClick={handleLogout}>
-          <span className="nav-icon">⛔️ </span> 
+          <span className="nav-icon material-symbols-outlined">logout</span>
           <span>Sair</span>
         </button>
+
+        
+
       </nav>
     </aside>
   );

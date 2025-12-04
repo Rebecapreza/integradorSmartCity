@@ -23,11 +23,15 @@
   box-shadow: 0 6px 20px rgba(0,0,0,0.12);
   animation: fadeIn 1s ease forwards;
 }
+
 .hero-banner h1 {
   background: linear-gradient(90deg, #000057, #2d3891);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
 }
+
 .hero-banner p {
   font-size: 22px;
   line-height: 1.6;
@@ -35,7 +39,6 @@
   margin: 0 auto;
   font-weight: 400;
 }
-
 
 /* --- Seção de Monitoramento --- */
 .monitoring-section {
@@ -53,8 +56,9 @@
   margin-bottom: 40px;
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-family: 'Poppins';
+  justify-content: center;
+  gap: 15px;
+  font-family: 'Poppins', sans-serif;
   font-weight: 600;
 }
 
@@ -72,35 +76,49 @@
   width: 160px;
   height: 160px;
   border-radius: 50%;
-  background: radial-gradient(circle, #74a9e6 40%, #5f94d8);
+  background: #fff;
   border: 2px solid #000057;
+  
+  /* Flexbox para centralizar tudo */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  
   cursor: pointer;
-  transition: 0.3s ease;
+  transition: all 0.3s ease;
   color: #000057;
   box-shadow: 0 4px 10px rgba(0,0,0,0.12);
 }
 
 .sensor-circle:hover {
   transform: translateY(-6px) scale(1.06);
-  background: radial-gradient(circle, #9ecafd 30%, #74a9e6);
+  background: #9ecafd;
   box-shadow: 0 10px 20px rgba(0,0,0,0.18);
 }
 
-/* Ícones maiores */
-.sensor-icon {
-  font-size: 55px;
-  margin-bottom: 10px;
+/* --- Estilo dos Ícones (Material Symbols) --- */
+/* Isso garante que o ícone fique grande e centralizado */
+.sensor-circle .material-symbols-outlined {
+  font-size: 64px;
+  color: #000057;
+  margin-bottom: 8px; /* Espaço entre o ícone e o texto */
   transition: transform 0.25s ease;
 }
 
-.sensor-circle:hover .sensor-icon {
-  transform: scale(1.15) rotate(5deg);
+.sensor-circle:hover .material-symbols-outlined {
+  transform: scale(1.1) rotate(5deg);
 }
 
+/* Rótulo do Sensor */
+.sensor-label {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #000057;
+  text-transform: capitalize;
+}
+
+/* Animações de Entrada */
 .sensor-circle {
   opacity: 0;
   animation: fadeUp 0.7s ease forwards;
@@ -110,6 +128,7 @@
 .sensor-circle:nth-child(2) { animation-delay: 0.25s; }
 .sensor-circle:nth-child(3) { animation-delay: 0.4s; }
 .sensor-circle:nth-child(4) { animation-delay: 0.55s; }
+.sensor-circle:nth-child(5) { animation-delay: 0.7s; }
 
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }
@@ -129,4 +148,71 @@
   color: #000057;
   font-style: italic;
   text-align: center;
+  width: 100%;
+}
+
+/* --- DASHBOARD E MÉTRICAS --- */
+.dashboard-metrics {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Container dos Cards (KPIs) */
+.kpi-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Estilo Base do Card */
+.card-kpi {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  min-width: 200px;
+  text-align: center;
+  flex: 1;
+  transition: transform 0.2s;
+}
+
+.card-kpi:hover {
+  transform: translateY(-5px);
+}
+
+/* Variações de Borda */
+.card-active {
+  border-left: 5px solid #4caf50; /* Verde */
+}
+
+.card-inactive {
+  border-left: 5px solid #f44336; /* Vermelho */
+}
+
+/* Títulos dentro dos Cards */
+.card-kpi h3 {
+  font-size: 1.1rem;
+  color: #555;
+  margin: 0;
+}
+
+/* Números Grandes */
+.card-number {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 10px 0 0 0;
+  color: #000057;
+}
+
+/* Cores de Texto Específicas */
+.text-green {
+  color: #4caf50;
+}
+
+.text-red {
+  color: #f44336;
 }

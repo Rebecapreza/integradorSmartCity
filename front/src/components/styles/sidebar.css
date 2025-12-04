@@ -78,7 +78,16 @@
   opacity: 1;
 }
 
-/* ÍCONE */
-.nav-icon {
-  font-size: 1.6rem;
+/* ÍCONES */
+.material-symbols-outlined {
+  font-size: 28px;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
 }
+
+/* Quando o botão estiver ativo */
+.nav-item.active .material-symbols-outlined {
+  color: #000; 
+}
+
